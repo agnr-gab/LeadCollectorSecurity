@@ -1,10 +1,21 @@
 package br.com.zup.LeadCollector.usuario;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 
 @Component
 public class UsuarioService {
     @Autowired
-    UsuarioRepository usuarioRepository;
+    private UsuarioRepository usuarioRepository;
+    @Autowired
+    private BCryptPasswordEncoder bCryptPasswordEncoder;
+
+    public Usuario salvarUsuario (Usuario usuario) {
+        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+        String senhaEscondida = passwordEncoder.encode(usuario.getSenha());
+
+        usuario.setSenha(senhaEscondida);
+        return usuarioRepository.save(usuario);
+    }
 }
