@@ -1,2 +1,4 @@
-package br.com.zup.LeadCollector.config.security.JWT.exceptions;public class TokenInvalidoException {
+package br.com.zup.LeadCollector.config.security.JWT.exceptions;
+
+public class TokenInvalidoException extends RuntimeException{
 }
