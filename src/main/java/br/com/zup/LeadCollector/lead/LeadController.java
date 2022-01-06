@@ -21,4 +21,9 @@ public class LeadController {
     public Iterable<Lead> exibirTodosLeads() {
         return leadService.exibirLeads();
     }
+
+    @PutMapping
+    public Lead atualizarLead (@RequestBody Lead lead) {
+        return leadService.atualizarLead(lead);
+    }
 }
