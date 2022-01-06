@@ -15,4 +15,8 @@ public class LeadService {
     public Iterable<Lead> exibirLeads() {
         return leadRepository.findAll();
     }
+
+    public Lead atualizarLead (Lead lead) {
+        return leadRepository.save(lead);
+    }
 }
