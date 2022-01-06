@@ -13,7 +13,7 @@ public class LeadController {
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     //por questão de serguraça nunca retorna a model fazer um DTO posteriormente
-    public Lead cadastrarLead (@RequestBody Lead lead){
+    public Lead cadastrarLead(@RequestBody Lead lead) {
         return leadService.salvarLEad(lead);
     }
 
@@ -23,7 +23,14 @@ public class LeadController {
     }
 
     @PutMapping
-    public Lead atualizarLead (@RequestBody Lead lead) {
+    public Lead atualizarLead(@RequestBody Lead lead) {
         return leadService.atualizarLead(lead);
     }
+
+    @DeleteMapping
+    @ResponseStatus(HttpStatus.NO_CONTENT) //no content pois deleting não tem corpo
+    public void deletarLead(@RequestParam String email) {
+        leadService.deletarLead(email);
+    }
+
 }
