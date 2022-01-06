@@ -57,7 +57,7 @@ public class FiltroDeAutorizaçãoJWT extends BasicAuthenticationFilter {
                 // manter o padrão do HTTP, pois existem vários tipos de token e precisa ser informado o tipo usado,
                 // senão irá impedir o momento de descriptografar. (token.substring(6)
             } catch (TokenInvalidoException exception) {
-                response.sendError(HttpStatus.FORBIDDEN.value());
+                response.setStatus(HttpStatus.FORBIDDEN.value());
             }
 
         }
