@@ -2,9 +2,9 @@ package br.com.zup.LeadCollector.config.security.JWT;
 
 import br.com.zup.LeadCollector.config.security.JWT.exceptions.TokenInvalidoException;
 import io.jsonwebtoken.Claims;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -57,7 +57,7 @@ public class FiltroDeAutorizaçãoJWT extends BasicAuthenticationFilter {
                 // manter o padrão do HTTP, pois existem vários tipos de token e precisa ser informado o tipo usado,
                 // senão irá impedir o momento de descriptografar. (token.substring(6)
             } catch (TokenInvalidoException exception) {
-                System.out.println();
+                response.sendError(HttpStatus.FORBIDDEN.value());
             }
 
         }
