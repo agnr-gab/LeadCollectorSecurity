@@ -16,7 +16,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.UUID;
 
 public class FiltroDeAutenticacaoJWT extends UsernamePasswordAuthenticationFilter {
     private JWTComponent jwtComponent;
@@ -53,7 +52,7 @@ public class FiltroDeAutenticacaoJWT extends UsernamePasswordAuthenticationFilte
         UsuarioLogado usuarioLogado = (UsuarioLogado) authResult.getPrincipal();
 
         String username = usuarioLogado.getUsername();
-        UUID id = usuarioLogado.getId();
+        String id = usuarioLogado.getId();
 
         String token = jwtComponent.gerarToken(username, id);
 
